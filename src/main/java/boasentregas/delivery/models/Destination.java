@@ -8,7 +8,5 @@ public class Destination
 
     private Addresses addresses;
 
-    private Double size;
-
-    private Double weight;
+    private Product product;
 }

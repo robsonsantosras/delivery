@@ -1,5 +1,6 @@
 package boasentregas.delivery.models;
 
+import boasentregas.delivery.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,7 +11,12 @@ import lombok.Setter;
 public class Ways {
     private int position;
 
+    private Status status;
+
     private Addresses addresses;
 
     private Distance distance;
+
+
 }
+

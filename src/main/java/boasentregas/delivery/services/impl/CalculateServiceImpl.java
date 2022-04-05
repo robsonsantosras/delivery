@@ -1,5 +1,6 @@
 package boasentregas.delivery.services.impl;
 
+import boasentregas.delivery.enums.Status;
 import boasentregas.delivery.models.*;
 import boasentregas.delivery.repositories.CalculateRepository;
 import boasentregas.delivery.services.CalculateService;
@@ -54,10 +55,11 @@ public class CalculateServiceImpl implements CalculateService
 
         if (sourcecd.getAddress().getName().equals(destinationcd.getAddress().getName()))
         {
-            Calculate calculate = Value(0.0,0.0,0.0);
+            //Calculate calculate = Value(destination.getProduct());
             Calculates calculates = new Calculates();
-            calculates.setCalculate(calculate);
             calculates.setWaysList(waysList);
+            calculates.setCalculate(calculates.Date());
+
 
             return calculates;
         }
@@ -103,11 +105,11 @@ public class CalculateServiceImpl implements CalculateService
         way = this.addWays(destinationcd.getAddress(),destination.getAddresses().getDestination(),distance);
         waysList.add(way);
 
-        Calculate calculate = Value(0.0,0.0,0.0);
+
 
         Calculates calculates = new Calculates();
-        calculates.setCalculate(calculate);
         calculates.setWaysList(waysList);
+        calculates.setCalculate(calculates.Date());
         calculates.setCustomer(customer);
 
         calculateRepository.save(calculates);
@@ -121,7 +123,7 @@ public class CalculateServiceImpl implements CalculateService
         Addresses addresses = new Addresses();
         addresses.setOrigin(origin);
         addresses.setDestination(destination);
-        return new Ways(position, addresses,distance);
+        return new Ways(position,Status.NAO_CHEGOU, addresses,distance);
     }
 
     private Distance distance(Address origin, Address destination)
@@ -130,9 +132,10 @@ public class CalculateServiceImpl implements CalculateService
         return distanceService.Distance(addresses);
     }
 
-    private Calculate Value(double distance,double weight,double size)
-    {
-        LocalDate date = LocalDate.of(2022,3,27);
-        return new Calculate(10.0,date,21);
-    }
+//    private Calculate Value(Product product)
+//    {
+//
+//
+//        return new Calculate(10.0,date,4);
+//    }
 }

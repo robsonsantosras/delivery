@@ -70,8 +70,8 @@
         <configuration> 
           <schemaVersion>v2</schemaVersion>  
           <subscriptionId>c6f79c45-8dbd-4f5d-985a-56029176327a</subscriptionId>  
-          <resourceGroup>delivery-1645754367535-rg</resourceGroup>  
-          <appName>delivery-1645754367535</appName>  
+          <resourceGroup>boasentregas</resourceGroup>
+          <appName>bedelivery</appName>
           <pricingTier>B1</pricingTier>  
           <region>brazilsouth</region>  
           <runtime> 

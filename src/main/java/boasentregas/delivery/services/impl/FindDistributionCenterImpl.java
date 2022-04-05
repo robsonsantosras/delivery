@@ -13,16 +13,18 @@ public class FindDistributionCenterImpl implements FindDistributionCenter {
     @Autowired
     private RestTemplate restTemplate;
 
+    private static String domain = "https://bedistributioncenter.azurewebsites.net/distributioncenter/v1/distributioncenters/";
+
 
     public DistributionCenter find(int zipcode){
-        String url = "https://distributioncenter.azurewebsites.net/distributioncenter/v1/distributioncenters/" + zipcode;
+        String url = domain + zipcode;
         DistributionCenter distributionCenter = restTemplate.getForObject(url, DistributionCenter.class);
 
         return distributionCenter;
     }
 
     public DistributionCenter findName(String name){
-        String url = "https://distributioncenter.azurewebsites.net/distributioncenter/v1/distributioncenters/name/" + name;
+        String url = domain + "name/" + name;
         DistributionCenter distributionCenter = restTemplate.getForObject(url, DistributionCenter.class);
 
         return distributionCenter;

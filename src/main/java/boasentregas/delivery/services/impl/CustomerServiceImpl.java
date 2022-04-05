@@ -23,13 +23,13 @@ public class CustomerServiceImpl implements CustomerService {
         String token = httpServletRequest.getHeader("Authorization");
         token = token.substring(7);
         TokenService tokenService = new TokenService();
-        return tokenService.getTokenId(token);
+        return tokenService.getClientId(token);
     }
 
     public Customer FindCustomer()
     {
         String idcustomer = FindCustomerId();
-        String url = "https://distributioncenter.azurewebsites.net/distributioncenter/v1/distributioncenters/" + idcustomer;
+        String url = "https://becustomer.azurewebsites.net/customer/v1/customers/" + idcustomer;
         Customer customer = restTemplate.getForObject(url, Customer.class);
 
         return customer;
